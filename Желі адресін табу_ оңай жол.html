@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Желі адресін табу: оңай жол</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--tx:#1b1f24;--mut:#6b7280;--bd:#e3e6ea;--g:#16a34a;--gbg:#dcfce7;--r:#dc2626;--rbg:#fee2e2;--y:#ca8a04;--ybg:#fef3c7;--b:#2563eb;--bbg:#dbeafe;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111418;--card:#1a1f26;--tx:#e8eaed;--mut:#9aa3ad;--bd:#2c333c;--g:#4ade80;--gbg:#14391f;--r:#f87171;--rbg:#3f1d1d;--y:#facc15;--ybg:#3d3410;--b:#60a5fa;--bbg:#1e3a5f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:16px}
+.w{max-width:640px;margin:0 auto}
+h1{font-size:19px;margin:0 0 12px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin-bottom:12px}
+.in{display:flex;gap:10px;flex-wrap:wrap}
+label{font-size:12px;color:var(--mut);display:block;margin-bottom:3px}
+input{font:inherit;padding:8px 10px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);width:160px}
+.hd{font-weight:700;font-size:15px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.nb{background:var(--b);color:#fff;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.t{font-size:15px;line-height:1.55;margin-bottom:10px}
+.t b{color:var(--b)}
+.new{animation:fi .5s}
+@keyframes fi{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.g{display:grid;grid-template-columns:54px repeat(4,1fr);gap:6px;align-items:center;margin:6px 0}
+.g .l{font-size:12px;font-weight:600;color:var(--mut)}
+.c{font:700 18px ui-monospace,monospace;text-align:center;padding:10px 2px;border-radius:8px;border:1px solid var(--bd);background:var(--bg)}
+.c.G{background:var(--gbg);border-color:var(--g);color:var(--g)}
+.c.R{background:var(--rbg);border-color:var(--r);color:var(--r)}
+.c.Y{background:var(--ybg);border-color:var(--y);color:var(--y)}
+.n{font-size:11px;text-align:center;color:var(--mut)}
+.bits{display:flex;gap:3px;justify-content:center;margin:4px 0}
+.bit{width:36px;height:40px;border-radius:7px;display:flex;align-items:center;justify-content:center;font:700 19px ui-monospace,monospace;background:var(--bg);border:1px solid var(--bd)}
+.sm .bit{width:26px;height:30px;font-size:14px}
+.bit.o{background:var(--bbg);border-color:var(--b);color:var(--b)}
+.bit.res{opacity:0;animation:pop .4s forwards;border-color:var(--g)}
+.bit.res.o{background:var(--gbg);color:var(--g)}
+@keyframes pop{from{opacity:0;transform:translateY(-10px) scale(.6)}to{opacity:1;transform:none}}
+.bl{font-size:12px;font-weight:600;color:var(--mut);text-align:center;margin-top:8px}
+.cap{display:flex;gap:3px;justify-content:center}
+.cap span{width:36px;text-align:center;font:600 11px ui-monospace,monospace;color:var(--mut)}
+.why{border:1px dashed var(--bd);border-radius:10px;padding:8px;margin-top:10px}
+.why .ttl{font-size:13px;margin:2px 0 4px}
+.tb{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0;font:700 14px ui-monospace,monospace}
+.tb span{padding:5px 10px;border-radius:8px;background:var(--bg);border:1px solid var(--bd)}
+.tb span.one{background:var(--gbg);border-color:var(--g);color:var(--g)}
+.nav{display:flex;gap:8px;align-items:center;position:sticky;bottom:8px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+button{font:inherit;padding:9px 16px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer}
+button.p{background:var(--b);color:#fff;border-color:var(--b)}
+button:disabled{opacity:.4}
+.dt{margin-left:auto;font-size:13px;color:var(--mut)}
+.err{color:var(--r);font-size:13px;line-height:1.6;flex-basis:100%;background:var(--rbg);border-radius:8px;padding:8px 10px}.err:empty{display:none}.err code{font-family:ui-monospace,monospace;font-weight:700}.err .bad{background:var(--r);color:#fff;border-radius:3px;padding:0 2px}
+</style>
+</head>
+<body>
+<div class="w">
+<h1>Желі адресі мен компьютер нөмірін табу</h1>
+<div class="card in">
+<div><label>IP-адрес</label><input id="ip" value="172.16.75.200"></div>
+<div><label>Маска</label><input id="mk" value="255.255.240.0"></div>
+<div id="er" class="err"></div>
+</div>
+<div id="vw"></div>
+<div class="card nav"><button id="pv">← Артқа</button><button id="nx" class="p">Келесі →</button><span class="dt" id="dt"></span></div>
+</div>
+<script>
+var step=0,ip,mk,k,net,host,N=5,prev=-1;
+function pa(s){var p=s.trim().split('.').map(Number);return p.length==4&&p.every(function(n){return Number.isInteger(n)&&n>=0&&n<=255})?p:null}
+function b8(n){return ('00000000'+n.toString(2)).slice(-8)}
+function grid(l,a,cls){return '<div class="g"><div class="l">'+l+'</div>'+a.map(function(v,i){return '<div class="c '+(cls?cls[i]:'')+'">'+v+'</div>'}).join('')+'</div>'}
+function notes(a){return '<div class="g"><div></div>'+a.map(function(v){return '<div class="n">'+v+'</div>'}).join('')+'</div>'}
+function bits(s,res,sm){var h='<div class="bits'+(sm?' sm':'')+'">';for(var i=0;i<8;i++)h+='<div class="bit'+(s[i]=='1'?' o':'')+(res?' res':'')+'"'+(res?' style="animation-delay:'+(i*300)+'ms"':'')+'>'+s[i]+'</div>';return h+'</div>'}
+function cls(){return mk.map(function(m){return m==255?'G':m==0?'R':'Y'})}
+function blk(n,title,text,body,last){return '<div class="card blk'+(last?' new':'')+'"><div class="hd"><span class="nb">'+n+'</span>'+title+'</div><div class="t">'+text+'</div>'+body+'</div>'}
+function why(i,sm){var a=b8(ip[i]),m=b8(mk[i]);return '<div class="why"><div class="ttl"><b>'+ip[i]+'</b> × <b>'+mk[i]+'</b></div>'+bits(a,0,1)+bits(m,0,1)+bits(b8(ip[i]&mk[i]),0,1)+'</div>'}
+function mul(){var a=b8(ip[k]),m=b8(mk[k]),r='';for(var i=0;i<8;i++)r+=a[i]=='1'&&m[i]=='1'?'1':'0';return r}
+function block(s,last){
+ var c=cls();
+ if(s==0)return blk(1,'Октеттерді салыстырамыз','IP-адрес пен масканы <b>октет-октетімен</b> салыстырамыз. Төрт жұп бар.',grid('IP',ip)+grid('Маска',mk,c),last);
+ if(s==1){
+  var res=ip.map(function(v,i){return mk[i]==255?v:mk[i]==0?0:'?'});
+  var f=mk.indexOf(255),z=mk.indexOf(0),w='';
+  if(f>=0)w+=why(f);
+  if(z>=0)w+=why(z);
+  return blk(2,'Ереже: 255 және 0','Маска <b style="color:var(--g)">255</b> болса — IP санын <b>өзгертпей көшіреміз</b>. Маска <b style="color:var(--r)">0</b> болса — <b>0</b> деп жазамыз. Сары жұпты ғана есептейміз.',
+  grid('IP',ip)+grid('Маска',mk,c)+notes(mk.map(function(m){return m==255?'көшіреміз':m==0?'нөл':'есептейміз'}))+grid('Желі',res,c)+
+  '<div class="t" style="margin-top:12px"><b>Неге бұлай?</b> 255 = 11111111 (бәрі 1), ал бит × 1 = сол бит, сондықтан сан өзгермейді. 0 = 00000000 (бәрі 0), ал бит × 0 = 0, сондықтан нәтиже 0. Төмендегі мысалдан көріңіз:</div>'+w,last)}
+ if(s==2)return k<0?blk(3,'Сары жұп жоқ','Бұл маскада есептейтін октет жоқ, желі адресі дайын.','',last):blk(3,'Екілікке аударамыз','Сары жұпты екілікке аударамыз: <b>'+ip[k]+'</b> = '+b8(ip[k])+', <b>'+mk[k]+'</b> = '+b8(mk[k])+'.',
+  '<div class="bl">IP: '+ip[k]+'</div>'+bits(b8(ip[k]))+'<div class="bl">Маска: '+mk[k]+'</div>'+bits(b8(mk[k])),last);
+ if(s==3){if(k<0)return '';var r=mul(),a=b8(ip[k]),m=b8(mk[k]),cp='';
+  for(var i=0;i<8;i++)cp+='<span>'+a[i]+'×'+m[i]+'</span>';
+  return blk(4,'Бағанмен көбейтеміз (конъюнкция ∧)','Конъюнкция — <b>биттерді көбейту</b>. Әр бағандағы екі битті көбейтеміз. Тек екеуі де 1 болғанда ғана нәтиже 1 болады.'+
+  '<div class="tb"><span>0×0=0</span><span>0×1=0</span><span>1×0=0</span><span class="one">1×1=1</span></div>',
+  '<div class="bl">IP: '+ip[k]+'</div>'+bits(a)+'<div class="bl">Маска: '+mk[k]+'</div>'+bits(m)+'<div class="cap">'+cp+'</div><div class="bl">Нәтиже: '+r+' = '+net[k]+'</div>'+bits(r,1)+grid('Желі',net,c),last)}
+ if(s==4)return blk(5,'Компьютер нөмірі','<b>Желі адресі</b> = '+net.join('.')+'. Компьютер нөмірі: <b>IP − Желі адресі</b>.',
+  grid('IP',ip)+grid('Желі −',net)+grid('Компьютер',host,host.map(function(){return 'G'}))+notes(host.map(function(v,i){return ip[i]+' − '+net[i]})),last)}
+function render(){
+ var h='';for(var s=0;s<=step;s++)h+=block(s,s==step&&step>prev);
+ document.getElementById('vw').innerHTML=h;
+ document.getElementById('dt').textContent=(step+1)+' / '+N;
+ document.getElementById('pv').disabled=step==0;document.getElementById('nx').disabled=step==N-1;
+ if(step>prev&&step>0){var e=document.querySelector('.blk.new');if(e)e.scrollIntoView({behavior:'smooth',block:'start'})}
+ prev=step}
+function esc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function chk4(s,name){var p=s.trim().split('.');if(p.length!=4||p.some(function(x){return x===''}))return '<b>'+name+'</b> 4 саннан тұруы керек, сандар нүктемен бөлінеді (мысалы, <code>192.168.1.10</code>). Әр сан — бір октет (8 бит).';for(var i=0;i<4;i++){var n=Number(p[i]);if(!/^\d+$/.test(p[i])||n>255)return '<b>'+name+'</b>: <code>'+esc(p[i])+'</code> дұрыс емес. Октет — 8 бит, сондықтан ол 0-ден 255-ке дейінгі (00000000–11111111) бүтін сан болуы керек.'}return ''}
+function check(a,m){var e=chk4(a,'IP-адрес')||chk4(m,'Маска');if(e)return e;var bin=pa(m).map(b8).join('');if(/^1*0*$/.test(bin))return '';var bad=bin.indexOf('1',bin.indexOf('0')),sh='';for(var i=0;i<32;i++){if(i&&i%8==0)sh+='.';sh+=(i==bad?'<span class="bad">1</span>':bin[i])}return '<b>Маска дұрыс емес.</b> Маска екілікте <b>алдымен тек бірлер, содан кейін тек нөлдер</b> болуы керек (бірлер — желі бөлігі, нөлдер — компьютер бөлігі; оларды араластыруға болмайды).<br>Енгізген масканың екілігі: <code>'+sh+'</code>. Қызыл бит нөлдерден кейін келіп тұр.<br>Октетте мүмкін мәндер: <code>0, 128, 192, 224, 240, 248, 252, 254, 255</code>. Сонымен қатар 255-тен кіші октеттен кейінгі барлық октет 0 болуы керек (мысалы, <code>255.255.240.0</code> дұрыс, ал <code>255.240.255.0</code> қате).'}
+function load(){
+ var a=pa(document.getElementById('ip').value),m=pa(document.getElementById('mk').value),e=document.getElementById('er');
+ var msg=check(document.getElementById('ip').value,document.getElementById('mk').value);if(msg){e.innerHTML=msg;return}
+ e.textContent='';ip=a;mk=m;k=-1;mk.forEach(function(x,i){if(x!=0&&x!=255)k=i});
+ net=ip.map(function(v,i){return v&mk[i]});host=ip.map(function(v,i){return v-net[i]});step=0;prev=-1;render()}
+document.getElementById('nx').onclick=function(){if(step<N-1){step++;render()}};
+document.getElementById('pv').onclick=function(){if(step>0){step--;prev=step;render()}};
+document.getElementById('ip').oninput=load;document.getElementById('mk').oninput=load;
+load();
+</script>
+</body>
+</html>
